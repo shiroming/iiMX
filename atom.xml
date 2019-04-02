@@ -1,0 +1,1002 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[小白的博客]]></title>
+  <subtitle><![CDATA[嗯哼]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="https://iimx.net/"/>
+  <updated>2019-04-02T13:10:18.628Z</updated>
+  <id>https://iimx.net/</id>
+  
+  <author>
+    <name><![CDATA[小白]]></name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[docker 基于alpine定制镜像]]></title>
+    <link href="https://iimx.net/2019/04/02/docker%E5%9F%BA%E4%BA%8Ealpine%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F/"/>
+    <id>https://iimx.net/2019/04/02/docker基于alpine定制镜像/</id>
+    <published>2019-04-02T12:49:52.000Z</published>
+    <updated>2019-04-02T13:10:18.628Z</updated>
+    <content type="html"><![CDATA[<p>docker 基于alpine定制镜像<br><a id="more"></a></p>
+<h2 id="拉取alpine镜像">拉取alpine镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull alpine</span><br></pre></td></tr></table></figure>
+<h2 id="创建并进入容器">创建并进入容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -it alpine /bin/sh  <span class="comment"># 创建进入容器</span></span><br><span class="line"><span class="built_in">exit</span>  <span class="comment"># 退出</span></span><br><span class="line"></span><br><span class="line">docker ps <span class="operator">-a</span>  <span class="comment"># 查看刚刚创建的容器id</span></span><br><span class="line">docker start &lt;container id&gt;  <span class="comment"># 启动容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it &lt;container id&gt; sh  <span class="comment"># 进入容器</span></span><br></pre></td></tr></table></figure>
+<h2 id="修改容器">修改容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改源</span></span><br><span class="line">sed -i <span class="string">'s/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g'</span> /etc/apk/repositories</span><br><span class="line"><span class="comment"># 修改时区</span></span><br><span class="line">apk add -U tzdata</span><br><span class="line">cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line">apk del tzdata</span><br></pre></td></tr></table></figure>
+<h2 id="创建镜像">创建镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit <span class="operator">-a</span> <span class="string">"镜像作者"</span> -m <span class="string">"提交文字 "</span> &lt;container id&gt; &lt;新镜像名称&gt;:&lt;tag&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="导出导入镜像">导出导入镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker save -o 导出名称.tar &lt;image name&gt;:&lt;tag&gt;  <span class="comment"># 导出镜像</span></span><br><span class="line">docker load &lt; xxx.tar  <span class="comment"># 导入镜像</span></span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<p>docker 基于alpine定制镜像<br>]]>
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://iimx.net/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="笔记" scheme="https://iimx.net/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[tkinter GUI]]></title>
+    <link href="https://iimx.net/2016/09/04/tkinter-GUI/"/>
+    <id>https://iimx.net/2016/09/04/tkinter-GUI/</id>
+    <published>2016-09-04T13:35:45.000Z</published>
+    <updated>2016-09-04T13:54:11.074Z</updated>
+    <content type="html"><![CDATA[<p>Python tkinter &amp; pyinstaller记录<br><a id="more"></a><br>pyinstaller</p>
+<ol>
+<li>单文件打包 tkinker icon资源</li>
+</ol>
+<p>tkinker</p>
+<ol>
+<li>按钮，输入框，文本框全选事件</li>
+<li>布局</li>
+<li>tk与ttk的差异</li>
+<li>按钮状态的改变</li>
+</ol>
+<p>后续更新详细情况</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Python tkinter &amp; pyinstaller记录<br>]]>
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://iimx.net/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="笔记" scheme="https://iimx.net/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[前端备忘录]]></title>
+    <link href="https://iimx.net/2016/04/01/%E5%89%8D%E7%AB%AF%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+    <id>https://iimx.net/2016/04/01/前端备忘录/</id>
+    <published>2016-04-01T08:11:15.000Z</published>
+    <updated>2016-04-01T08:13:10.583Z</updated>
+    <content type="html"><![CDATA[<p>各种前端资料<br><a id="more"></a><br><a href="http://blog.csdn.net/zhaizu/article/details/17170555" target="_blank" rel="external">Highcharts + jQuery + Servlet 实现从后台获取JSON实时刷新图表</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>各种前端资料<br>]]>
+    
+    </summary>
+    
+      <category term="备忘录" scheme="https://iimx.net/tags/%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+    
+      <category term="笔记" scheme="https://iimx.net/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="备忘录" scheme="https://iimx.net/categories/%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Java开发备忘录]]></title>
+    <link href="https://iimx.net/2016/03/24/Java%E5%BC%80%E5%8F%91%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+    <id>https://iimx.net/2016/03/24/Java开发备忘录/</id>
+    <published>2016-03-24T08:14:04.000Z</published>
+    <updated>2016-04-01T08:12:52.209Z</updated>
+    <content type="html"><![CDATA[<p>记录java各种资料<br><a id="more"></a><br><a href="http://www.importnew.com/18633.html" target="_blank" rel="external">Java HashMap工作原理及实现</a></p>
+<p><a href="http://www.hollischuang.com/archives/1360" target="_blank" rel="external">Java开发人员最常犯的10个错误</a></p>
+<p><a href="http://www.hollischuang.com/archives/442" target="_blank" rel="external">Java中常见亲属比较</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>记录java各种资料<br>]]>
+    
+    </summary>
+    
+      <category term="备忘录" scheme="https://iimx.net/tags/%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+    
+      <category term="备忘录" scheme="https://iimx.net/categories/%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Android开发备忘录]]></title>
+    <link href="https://iimx.net/2016/03/22/Android%E5%BC%80%E5%8F%91%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+    <id>https://iimx.net/2016/03/22/Android开发备忘录/</id>
+    <published>2016-03-22T06:50:02.000Z</published>
+    <updated>2016-04-01T08:13:09.180Z</updated>
+    <content type="html"><![CDATA[<p>记录Android各种资料<br><a id="more"></a></p>
+<p><a href="http://www.jianshu.com/p/b56cab2cf4a8" target="_blank" rel="external">22个值得收藏的Android开源代码-UI篇</a><br>s&gt; <a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/1020/1808.html" target="_blank" rel="external">原文地址</a></p>
+<p><a href="http://www.jianshu.com/p/a63700cb7720" target="_blank" rel="external">这些小工具让你的Android 开发更高效（上）</a><br><a href="http://www.jianshu.com/p/e4f80f3252ea" target="_blank" rel="external">Android 开发有哪些新技术出现？</a><br><a href="http://www.jianshu.com/p/1e6eed09d48b" target="_blank" rel="external">Android Material Design 兼容库的使用详解</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>记录Android各种资料<br>]]>
+    
+    </summary>
+    
+      <category term="备忘录" scheme="https://iimx.net/tags/%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+    
+      <category term="笔记" scheme="https://iimx.net/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="备忘录" scheme="https://iimx.net/categories/%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[ubuntu时区修改]]></title>
+    <link href="https://iimx.net/2016/03/17/ubuntu%E6%97%B6%E5%8C%BA%E4%BF%AE%E6%94%B9/"/>
+    <id>https://iimx.net/2016/03/17/ubuntu时区修改/</id>
+    <published>2016-03-17T09:55:13.000Z</published>
+    <updated>2016-03-21T07:48:42.622Z</updated>
+    <content type="html"><![CDATA[<p>ubuntu时区修改<br><a id="more"></a><br>重拾vagrant，发现ubuntu中时间是UTC差8小时。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ date</span><br><span class="line">Thu Mar <span class="number">17</span> <span class="number">09</span>:<span class="number">39</span>:<span class="number">29</span> UTC <span class="number">2016</span></span><br></pre></td></tr></table></figure></p>
+<p>需要执行<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>sudo tzselect</span><br></pre></td></tr></table></figure></p>
+<p>选择区域 <strong>亚洲</strong>，国家 <strong>中国</strong>，时区 <strong>北京时间</strong>，确认验证 <strong>YES</strong></p>
+<p>复制文件到/etc目录下<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>Asia<span class="regexp">/Shanghai  /</span>etc<span class="regexp">/localtime</span></span><br></pre></td></tr></table></figure></p>
+<p>更新时间<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ntpdate <span class="tag">time</span><span class="class">.windows</span><span class="class">.com</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>[注]<br>  <figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ dpkg-reconfigure tzdata</span><br><span class="line">Current <span class="keyword">default</span> <span class="built_in">time</span> zone: <span class="comment">'Asia/Chongqing'</span></span><br><span class="line">Local <span class="built_in">time</span> <span class="keyword">is</span> <span class="built_in">now</span>:      Mon Mar <span class="number">21</span> <span class="number">15</span>:<span class="number">45</span>:<span class="number">44</span> CST <span class="number">2016.</span></span><br><span class="line">Universal <span class="built_in">Time</span> <span class="keyword">is</span> <span class="built_in">now</span>:  Mon Mar <span class="number">21</span> <span class="number">07</span>:<span class="number">45</span>:<span class="number">44</span> UTC <span class="number">2016.</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>  选择对应区域，时区。也OK</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>ubuntu时区修改<br>]]>
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://iimx.net/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="笔记" scheme="https://iimx.net/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[JS检查浏览器类型函数]]></title>
+    <link href="https://iimx.net/2016/03/10/js%E6%A3%80%E6%9F%A5%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B1%BB%E5%9E%8B%E5%87%BD%E6%95%B0%E5%88%86%E4%BA%AB/"/>
+    <id>https://iimx.net/2016/03/10/js检查浏览器类型函数分享/</id>
+    <published>2016-03-10T08:36:48.000Z</published>
+    <updated>2016-03-24T08:23:50.190Z</updated>
+    <content type="html"><![CDATA[<p>JS检查浏览器类型函数<br><a id="more"></a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * [checkPlatformm 检查客户端的平台]</span><br><span class="line"> * @return &#123;[string]&#125; [客户端的类型名称]</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkPlatformm</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">    <span class="keyword">var</span> ua = <span class="built_in">window</span>.navigator.userAgent.toLowerCase(); </span><br><span class="line">    <span class="keyword">if</span>(ua.match(<span class="regexp">/MicroMessenger/i</span>) == <span class="string">'micromessenger'</span>)&#123; </span><br><span class="line">        <span class="keyword">return</span> <span class="string">'weixin'</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ua.match(<span class="regexp">/android/i</span>) == <span class="string">'android'</span>)&#123; </span><br><span class="line">        <span class="keyword">return</span> <span class="string">'android'</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ua.match(<span class="regexp">/ios/i</span>) == <span class="string">'ios'</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'ios'</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ua.match(<span class="regexp">/windows/i</span>) == <span class="string">'windows'</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'windows'</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ua.match(<span class="regexp">/windows/i</span>) == <span class="string">'linux'</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'linux'</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'unkown'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<p>JS检查浏览器类型函数<br>]]>
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://iimx.net/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="笔记" scheme="https://iimx.net/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[jQuery事件]]></title>
+    <link href="https://iimx.net/2015/11/13/jQuery%E4%BA%8B%E4%BB%B6/"/>
+    <id>https://iimx.net/2015/11/13/jQuery事件/</id>
+    <published>2015-11-13T09:31:14.000Z</published>
+    <updated>2015-11-13T10:11:32.540Z</updated>
+    <content type="html"><![CDATA[<p>jQuery事件<br><a id="more"></a></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"p"</span>).addClass(css中定义的样式类型); 给某个元素添加样式</span><br><span class="line">$(<span class="string">"img"</span>).attr(&#123;src:<span class="string">"test.jpg"</span>,alt:<span class="string">"test Image"</span>&#125;); 给某个元素添加属性/值，参数是map</span><br><span class="line">$(<span class="string">"img"</span>).attr(<span class="string">"src"</span>,<span class="string">"test.jpg"</span>); 给某个元素添加属性/值</span><br><span class="line">$(<span class="string">"img"</span>).attr(<span class="string">"title"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.src &#125;); 给某个元素添加属性/值</span><br><span class="line">$(<span class="string">"元素名称"</span>).html(); 获得该元素内的内容（元素，文本等）</span><br><span class="line">$(<span class="string">"元素名称"</span>).html(<span class="string">"&lt;b&gt;new stuff&lt;/b&gt;"</span>); 给某元素设置内容</span><br><span class="line">$(<span class="string">"元素名称"</span>).removeAttr(<span class="string">"属性名称"</span>) 给某元素删除指定的属性以及该属性的值</span><br><span class="line">$(<span class="string">"元素名称"</span>).removeClass(<span class="string">"class"</span>) 给某元素删除指定的样式</span><br><span class="line">$(<span class="string">"元素名称"</span>).text(); 获得该元素的文本</span><br><span class="line">$(<span class="string">"元素名称"</span>).text(value); 设置该元素的文本值为value</span><br><span class="line">$(<span class="string">"元素名称"</span>).toggleClass(<span class="keyword">class</span>) 当元素存在参数中的样式的时候取消,如果不存在就设置此样式</span><br><span class="line">$(<span class="string">"input元素名称"</span>).val(); 获取input元素的值</span><br><span class="line">$(<span class="string">"input元素名称"</span>).val(value); 设置input元素的值为value</span><br><span class="line">Manipulation：</span><br><span class="line">$(<span class="string">"元素名称"</span>).after(content); 在匹配元素后面添加内容</span><br><span class="line">$(<span class="string">"元素名称"</span>).append(content); 将content作为元素的内容插入到该元素的后面</span><br><span class="line">$(<span class="string">"元素名称"</span>).appendTo(content); 在content后接元素</span><br><span class="line">$(<span class="string">"元素名称"</span>).before(content); 与after方法相反</span><br><span class="line">$(<span class="string">"元素名称"</span>).clone(布尔表达式) 当布尔表达式为真时，克隆元素（无参时，当作<span class="literal">true</span>处理）</span><br><span class="line">$(<span class="string">"元素名称"</span>).empty() 将该元素的内容设置为空</span><br><span class="line">$(<span class="string">"元素名称"</span>).insertAfter(content); 将该元素插入到content之后</span><br><span class="line">$(<span class="string">"元素名称"</span>).insertBefore(content); 将该元素插入到content之前</span><br><span class="line">$(<span class="string">"元素"</span>).prepend(content); 将content作为该元素的一部分，放到该元素的最前面</span><br><span class="line">$(<span class="string">"元素"</span>).prependTo(content); 将该元素作为content的一部分，放content的最前面</span><br><span class="line">$(<span class="string">"元素"</span>).remove(); 删除所有的指定元素</span><br><span class="line">$(<span class="string">"元素"</span>).remove(<span class="string">"exp"</span>); 删除所有含有exp的元素</span><br><span class="line">$(<span class="string">"元素"</span>).wrap(<span class="string">"html"</span>); 用html来包围该元素</span><br><span class="line">$(<span class="string">"元素"</span>).wrap(element); 用element来包围该元素</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<p>jQuery事件<br>]]>
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://iimx.net/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="笔记" scheme="https://iimx.net/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[AJAX过程]]></title>
+    <link href="https://iimx.net/2015/11/10/AJAX%E8%BF%87%E7%A8%8B/"/>
+    <id>https://iimx.net/2015/11/10/AJAX过程/</id>
+    <published>2015-11-10T07:51:46.000Z</published>
+    <updated>2015-11-10T07:54:06.377Z</updated>
+    <content type="html"><![CDATA[<a id="more"></a>
+<p>(1)创建XMLHttpRequest对象,也就是创建一个异步调用对象.</p>
+<p>(2)创建一个新的HTTP请求,并指定该HTTP请求的方法、URL及验证信息.</p>
+<p>(3)设置响应HTTP请求状态变化的函数.</p>
+<p>(4)发送HTTP请求.</p>
+<p>(5)获取异步调用返回的数据.</p>
+<p>(6)使用JavaScript和DOM实现局部刷新.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<a id="more"></a>
+<p>(1)创建XMLHttpRequest对象,也就是创建一个异步调用对象.</p>
+<p>(2)创建一个新的HTTP请求,并指定该HTTP请求的方法、URL及验证信息.</p>
+<p>(3)设置响应HTTP请求状态变化的函数.</p>
+<p]]>
+    </summary>
+    
+      <category term="笔记" scheme="https://iimx.net/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="笔记" scheme="https://iimx.net/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[web应用性能优化]]></title>
+    <link href="https://iimx.net/2015/11/10/web%E5%BA%94%E7%94%A8%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <id>https://iimx.net/2015/11/10/web应用性能优化/</id>
+    <published>2015-11-10T07:37:07.000Z</published>
+    <updated>2015-11-10T07:47:20.778Z</updated>
+    <content type="html"><![CDATA[<p>Web应用性能优化黄金法则：先优化前端程序(front-end)的性能，因为这是80%或以上的最终用户响应时间的花费所在。</p>
+<a id="more"></a>
+<h3 id="法则1：减少HTTP请求次数">法则1：减少HTTP请求次数</h3><h3 id="法则2：使用CDN(Content_Delivery_Network,_内容分发网络)">法则2：使用CDN(Content Delivery Network, 内容分发网络)</h3><h3 id="法则3：增加Expires_Header">法则3：增加Expires Header</h3><h3 id="法则4：压缩页面元素">法则4：压缩页面元素</h3><h3 id="法则5：把样式表放在头上">法则5：把样式表放在头上</h3><h3 id="法则6：把脚本文件放在底部">法则6：把脚本文件放在底部</h3><h3 id="法则7：避免CSS表达式">法则7：避免CSS表达式</h3><h3 id="法则8：把JavaScript和CSS放到外部文件中">法则8：把JavaScript和CSS放到外部文件中</h3><h3 id="法则9：减少DNS查询次数">法则9：减少DNS查询次数</h3><h3 id="法则10：最小化JavaScript代码">法则10：最小化JavaScript代码</h3><h3 id="法则11：避免重定向">法则11：避免重定向</h3><h3 id="法则12：删除重复的脚本文件">法则12：删除重复的脚本文件</h3><h3 id="法则13：配置ETags">法则13：配置ETags</h3><h3 id="法则14：缓存Ajax">法则14：缓存Ajax</h3>]]></content>
+    <summary type="html">
+    <![CDATA[<p>Web应用性能优化黄金法则：先优化前端程序(front-end)的性能，因为这是80%或以上的最终用户响应时间的花费所在。</p>]]>
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://iimx.net/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="笔记" scheme="https://iimx.net/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Python对象池机制]]></title>
+    <link href="https://iimx.net/2015/11/08/Python%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%9C%BA%E5%88%B6/"/>
+    <id>https://iimx.net/2015/11/08/Python对象池机制/</id>
+    <published>2015-11-07T16:24:03.000Z</published>
+    <updated>2016-03-24T08:25:19.416Z</updated>
+    <content type="html"><![CDATA[<p>如题</p>
+<a id="more"></a>
+<p>在python源码中，对于<strong>小整数</strong>和<strong>单个字符</strong>都使用了<strong>缓冲池机制</strong>，不同的是小整数的缓冲池是在python初始化时被创建的，而字符串对象体系中的字符缓冲池则是以静态变量的形式存在着。</p>
+<p>python的所有对象，都是存活在<strong>系统堆</strong>上。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ifndef NSMALLPOSINTS</span></span><br><span class="line"><span class="comment">#define NSMALLPOSINTS           257</span></span><br><span class="line"><span class="comment">#endif</span></span><br><span class="line"><span class="comment">#ifndef NSMALLNEGINTS</span></span><br><span class="line"><span class="comment">#define NSMALLNEGINTS           5</span></span><br><span class="line"><span class="comment">#endif</span></span><br><span class="line"><span class="comment">#if NSMALLNEGINTS + NSMALLPOSINTS &gt; 0</span></span><br><span class="line">/* References to small integers are saved <span class="keyword">in</span> this array so that they</span><br><span class="line">   can be shared.</span><br><span class="line">   The integers that are saved are those <span class="keyword">in</span> the range</span><br><span class="line">   -NSMALLNEGINTS (inclusive) to NSMALLPOSINTS (<span class="keyword">not</span> inclusive).</span><br><span class="line">*/</span><br><span class="line">static PyIntObject *small_ints[NSMALLNEGINTS + NSMALLPOSINTS];</span><br><span class="line"><span class="comment">#endif</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/a_b.png" alt="id(a),id(b)"></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>如题</p>]]>
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://iimx.net/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="笔记" scheme="https://iimx.net/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[常用密码表]]></title>
+    <link href="https://iimx.net/2015/11/06/%E5%B8%B8%E7%94%A8%E5%AF%86%E7%A0%81%E8%A1%A8/"/>
+    <id>https://iimx.net/2015/11/06/常用密码表/</id>
+    <published>2015-11-06T14:30:54.000Z</published>
+    <updated>2015-11-06T16:01:05.468Z</updated>
+    <content type="html"><![CDATA[<p>如题</p>
+<a id="more"></a>
+<h3 id="基本字母表">基本字母表</h3><table>
+<thead>
+<tr>
+<th>01</th>
+<th>02</th>
+<th>03</th>
+<th>04</th>
+<th>05</th>
+<th>06</th>
+<th>07</th>
+<th>08</th>
+<th>09</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+<td>G</td>
+<td>H</td>
+<td>I</td>
+<td>J</td>
+<td>K</td>
+<td>L</td>
+<td>M</td>
+</tr>
+<tr>
+<td><strong>14</strong></td>
+<td><strong>15</strong></td>
+<td><strong>16</strong></td>
+<td><strong>17</strong></td>
+<td><strong>18</strong></td>
+<td><strong>19</strong></td>
+<td><strong>20</strong></td>
+<td><strong>21</strong></td>
+<td><strong>22</strong></td>
+<td><strong>23</strong></td>
+<td><strong>24</strong></td>
+<td><strong>25</strong></td>
+<td><strong>26</strong></td>
+</tr>
+<tr>
+<td>N</td>
+<td>O</td>
+<td>P</td>
+<td>Q</td>
+<td>R</td>
+<td>S</td>
+<td>T</td>
+<td>U</td>
+<td>V</td>
+<td>W</td>
+<td>X</td>
+<td>Y</td>
+<td>Z</td>
+</tr>
+</tbody>
+</table>
+<h3 id="QWE加密表">QWE加密表</h3><p><img src="/images/QWE.png" alt="QWE"></p>
+<table>
+<thead>
+<tr>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>e</th>
+<th>f</th>
+<th>g</th>
+<th>h</th>
+<th>i</th>
+<th>j</th>
+<th>k</th>
+<th>l</th>
+<th>m</th>
+<th>n</th>
+<th>o</th>
+<th>p</th>
+<th>q</th>
+<th>r</th>
+<th>s</th>
+<th>t</th>
+<th>u</th>
+<th>v</th>
+<th>w</th>
+<th>x</th>
+<th>y</th>
+<th>z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q</td>
+<td>W</td>
+<td>E</td>
+<td>R</td>
+<td>T</td>
+<td>Y</td>
+<td>U</td>
+<td>I</td>
+<td>O</td>
+<td>P</td>
+<td>A</td>
+<td>S</td>
+<td>D</td>
+<td>F</td>
+<td>G</td>
+<td>H</td>
+<td>J</td>
+<td>K</td>
+<td>L</td>
+<td>Z</td>
+<td>X</td>
+<td>C</td>
+<td>V</td>
+<td>B</td>
+<td>N</td>
+<td>M</td>
+</tr>
+</tbody>
+</table>
+<h3 id="QWE解密表">QWE解密表</h3><table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+<th>G</th>
+<th>H</th>
+<th>I</th>
+<th>J</th>
+<th>K</th>
+<th>L</th>
+<th>M</th>
+<th>N</th>
+<th>O</th>
+<th>P</th>
+<th>Q</th>
+<th>R</th>
+<th>S</th>
+<th>T</th>
+<th>U</th>
+<th>V</th>
+<th>W</th>
+<th>X</th>
+<th>Y</th>
+<th>Z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>k</td>
+<td>x</td>
+<td>v</td>
+<td>m</td>
+<td>c</td>
+<td>n</td>
+<td>o</td>
+<td>p</td>
+<td>h</td>
+<td>q</td>
+<td>r</td>
+<td>s</td>
+<td>z</td>
+<td>y</td>
+<td>i</td>
+<td>j</td>
+<td>a</td>
+<td>d</td>
+<td>l</td>
+<td>e</td>
+<td>g</td>
+<td>w</td>
+<td>b</td>
+<td>u</td>
+<td>f</td>
+<td>t</td>
+</tr>
+</tbody>
+</table>
+<h3 id="埃特巴什加密/解密表">埃特巴什加密/解密表</h3><table>
+<thead>
+<tr>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>e</th>
+<th>f</th>
+<th>g</th>
+<th>h</th>
+<th>i</th>
+<th>j</th>
+<th>k</th>
+<th>l</th>
+<th>m</th>
+<th>n</th>
+<th>o</th>
+<th>p</th>
+<th>q</th>
+<th>r</th>
+<th>s</th>
+<th>t</th>
+<th>u</th>
+<th>v</th>
+<th>w</th>
+<th>x</th>
+<th>y</th>
+<th>z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Z</td>
+<td>Y</td>
+<td>X</td>
+<td>W</td>
+<td>V</td>
+<td>U</td>
+<td>T</td>
+<td>S</td>
+<td>R</td>
+<td>Q</td>
+<td>P</td>
+<td>O</td>
+<td>N</td>
+<td>M</td>
+<td>L</td>
+<td>K</td>
+<td>J</td>
+<td>I</td>
+<td>H</td>
+<td>G</td>
+<td>F</td>
+<td>E</td>
+<td>D</td>
+<td>C</td>
+<td>B</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+<h3 id="反序QWE加密表">反序QWE加密表</h3><table>
+<thead>
+<tr>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>e</th>
+<th>f</th>
+<th>g</th>
+<th>h</th>
+<th>i</th>
+<th>j</th>
+<th>k</th>
+<th>l</th>
+<th>m</th>
+<th>n</th>
+<th>o</th>
+<th>p</th>
+<th>q</th>
+<th>r</th>
+<th>s</th>
+<th>t</th>
+<th>u</th>
+<th>v</th>
+<th>w</th>
+<th>x</th>
+<th>y</th>
+<th>z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M</td>
+<td>N</td>
+<td>B</td>
+<td>V</td>
+<td>C</td>
+<td>X</td>
+<td>Z</td>
+<td>L</td>
+<td>K</td>
+<td>J</td>
+<td>H</td>
+<td>G</td>
+<td>F</td>
+<td>D</td>
+<td>S</td>
+<td>A</td>
+<td>P</td>
+<td>O</td>
+<td>I</td>
+<td>U</td>
+<td>Y</td>
+<td>T</td>
+<td>R</td>
+<td>E</td>
+<td>W</td>
+<td>Q</td>
+</tr>
+</tbody>
+</table>
+<h3 id="英文字母频率特性表">英文字母频率特性表</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">字母</th>
+<th style="text-align:center">频率</th>
+<th style="text-align:left">直方图</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">8.167</td>
+<td style="text-align:left">················</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">1.492</td>
+<td style="text-align:left">···</td>
+</tr>
+<tr>
+<td style="text-align:center">C</td>
+<td style="text-align:center">2.782</td>
+<td style="text-align:left">······</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">4.253</td>
+<td style="text-align:left">········</td>
+</tr>
+<tr>
+<td style="text-align:center">E</td>
+<td style="text-align:center">12.702</td>
+<td style="text-align:left">··························</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">2.228</td>
+<td style="text-align:left">····</td>
+</tr>
+<tr>
+<td style="text-align:center">G</td>
+<td style="text-align:center">2.015</td>
+<td style="text-align:left">····</td>
+</tr>
+<tr>
+<td style="text-align:center">H</td>
+<td style="text-align:center">6.094</td>
+<td style="text-align:left">············</td>
+</tr>
+<tr>
+<td style="text-align:center">I</td>
+<td style="text-align:center">6.966</td>
+<td style="text-align:left">··············</td>
+</tr>
+<tr>
+<td style="text-align:center">J</td>
+<td style="text-align:center">0.153</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">K</td>
+<td style="text-align:center">0.772</td>
+<td style="text-align:left">··</td>
+</tr>
+<tr>
+<td style="text-align:center">L</td>
+<td style="text-align:center">4.025</td>
+<td style="text-align:left">········</td>
+</tr>
+<tr>
+<td style="text-align:center">M</td>
+<td style="text-align:center">2.406</td>
+<td style="text-align:left">·····</td>
+</tr>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">6.749</td>
+<td style="text-align:left">·············</td>
+</tr>
+<tr>
+<td style="text-align:center">O</td>
+<td style="text-align:center">7.507</td>
+<td style="text-align:left">···············</td>
+</tr>
+<tr>
+<td style="text-align:center">P</td>
+<td style="text-align:center">1.929</td>
+<td style="text-align:left">····</td>
+</tr>
+<tr>
+<td style="text-align:center">Q</td>
+<td style="text-align:center">0.095</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">R</td>
+<td style="text-align:center">5.987</td>
+<td style="text-align:left">············</td>
+</tr>
+<tr>
+<td style="text-align:center">S</td>
+<td style="text-align:center">6.327</td>
+<td style="text-align:left">·············</td>
+</tr>
+<tr>
+<td style="text-align:center">T</td>
+<td style="text-align:center">9.056</td>
+<td style="text-align:left">··················</td>
+</tr>
+<tr>
+<td style="text-align:center">U</td>
+<td style="text-align:center">2.758</td>
+<td style="text-align:left">·····</td>
+</tr>
+<tr>
+<td style="text-align:center">V</td>
+<td style="text-align:center">0.978</td>
+<td style="text-align:left">··</td>
+</tr>
+<tr>
+<td style="text-align:center">W</td>
+<td style="text-align:center">2.360</td>
+<td style="text-align:left">·····</td>
+</tr>
+<tr>
+<td style="text-align:center">X</td>
+<td style="text-align:center">0.150</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">1.974</td>
+<td style="text-align:left">····</td>
+</tr>
+<tr>
+<td style="text-align:center">Z</td>
+<td style="text-align:center">0.074</td>
+</tr>
+</tbody>
+</table>
+<h3 id="培根密码表">培根密码表</h3><p><img src="/images/培根密码图.png" alt="培根密码图"></p>
+<blockquote>
+<p>编写密码时，把密文每五个字母为一组，凡是其中的正体字母代表a，斜体字母代表b。随意选取句子或文章，就可以通过改变字母的写法来加密了。   </p>
+</blockquote>
+<h3 id="维吉尼亚密码图">维吉尼亚密码图</h3><p><img src="/images/维吉尼亚密码图.jpg" alt="维吉尼亚密码图"></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>如题</p>]]>
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://iimx.net/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="笔记" scheme="https://iimx.net/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[为什么disqus会不显示]]></title>
+    <link href="https://iimx.net/2015/09/29/%E4%B8%BA%E4%BB%80%E4%B9%88disqus%E4%BC%9A%E4%B8%8D%E6%98%BE%E7%A4%BA/"/>
+    <id>https://iimx.net/2015/09/29/为什么disqus会不显示/</id>
+    <published>2015-09-29T04:14:09.000Z</published>
+    <updated>2015-09-29T04:15:20.795Z</updated>
+    <content type="html"><![CDATA[<p>写博客发现<br>hexo标题中包含 &#39; 会导致disqus不显示。<br>只能将 &#39; 写成了 `</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>写博客发现<br>hexo标题中包含 &#39; 会导致disqus不显示。<br>只能将 &#39; 写成了 `</p>
+]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Don`t make me think 点石成金]]></title>
+    <link href="https://iimx.net/2015/09/29/%E7%82%B9%E7%9F%B3%E6%88%90%E9%87%91/"/>
+    <id>https://iimx.net/2015/09/29/点石成金/</id>
+    <published>2015-09-29T00:57:14.000Z</published>
+    <updated>2015-09-29T04:12:05.711Z</updated>
+    <content type="html"><![CDATA[<p>昨天coding月读新书到了，看了作者的自述，太喜感了。<br><a id="more"></a></p>
+<p><img src="/images/点石成金.jpg" alt="点石成金"></p>
+<blockquote>
+<p>It&#39;s not rocket surgery.</p>
+</blockquote>
+<p>作者Steve Krug的公司座右铭。<br>（rocket surgery --&gt; rocket science + brain surgery--&gt;某种不存在的超级复杂高精尖的技术）</p>
+<p>文中提到的<a href="https://www.youtube.com/watch?v=pQHX-SjgQvQ" target="_blank" rel="external">medieval helpdesk</a>（英文字幕）</p>
+<h1 id="可用性定义">可用性定义</h1><p>[分解成以下 <strong>7个方面</strong>]</p>
+<ul>
+<li>有用：能否帮助人们完成一些必要的事务？</li>
+<li>可学习：人们能否明白如何使用它？</li>
+<li>可记忆：人们每次使用时候，是否需要重新学习？</li>
+<li>有效：它们能完成任务吗？</li>
+<li>高效：它们是否只需要花费适当的时间和努力就能完成任务？</li>
+<li>合乎期望：是人们想要的吗？</li>
+<li>令人愉悦：人们使用的时候觉得有意思甚至很好玩吗？</li>
+</ul>
+<h1 id="可用性第一定律（原则）">可用性第一定律（原则）</h1><h2 id="别让我思考_Don&#39;t_make_me_think!">别让我思考 Don&#39;t make me think!</h2><p><code>扩展原则 如果你不能做到让一个页面不言而喻，那么至少应该让它自我解释。</code></p>
+<h1 id="第一个事实：我们不是阅读，而是扫描">第一个事实：我们不是阅读，而是扫描</h1><h2 id="为什么扫描？">为什么扫描？</h2><h3 id="1-我们总是任务在身">1.我们总是任务在身</h3><h3 id="2-我们知道自己不必阅读所有内容">2.我们知道自己不必阅读所有内容</h3><h3 id="3-我们善于扫描">3.我们善于扫描</h3><h1 id="第二个事实：我们不作最佳选择，而是满意即可">第二个事实：我们不作最佳选择，而是满意即可</h1><h2 id="满意策略（stisfice）">满意策略（stisfice）</h2><p>事实上，绝大部分时间里我们不会选择最好的，而是选择第一个过得去的，这就是<strong>满意策略</strong>。一旦我们发现一个链接，看起来似乎会跳转到我们想去的地方，那就是一个我们将会点击它的大号机会。</p>
+<h2 id="为什么Web用户不寻找最佳的选择呢？">为什么Web用户不寻找最佳的选择呢？</h2><h3 id="1-我们总是处于忙碌中">1.我们总是处于忙碌中</h3><blockquote>
+<p>&quot;寻找最佳策略很难，需要的时间也很长，满意策略效率最高。————Gary Klein《Sources of Power：How People Make Decisions》《力量之泉：人们如何决策》&quot;</p>
+</blockquote>
+<h3 id="2-如果猜错了，也不会产生什么严重的后果">2.如果猜错了，也不会产生什么严重的后果</h3><h3 id="3-对选择进行权衡并不会改善我们的机会">3.对选择进行权衡并不会改善我们的机会</h3><h3 id="4-猜测更有意思">4.猜测更有意思</h3><h1 id="第三个事实：我们不是追根究底，而是勉强应付">第三个事实：我们不是追根究底，而是勉强应付</h1><p><code>真正的王子发现当他不在的时候，那个长得很像的假王子会把大英帝国的国玺拿过来压胡桃。————《乞丐王子》</code></p>
+<h2 id="为什么会这样？">为什么会这样？</h2><h3 id="1-这对我们来说并不重要">1.这对我们来说并不重要</h3><h3 id="2-如果发现某个东西能用，我们会一直使用它">2.如果发现某个东西能用，我们会一直使用它</h3>]]></content>
+    <summary type="html">
+    <![CDATA[<p>昨天coding月读新书到了，看了作者的自述，太喜感了。<br>]]>
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://iimx.net/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="笔记" scheme="https://iimx.net/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Diagram Test]]></title>
+    <link href="https://iimx.net/2015/09/25/Diagram%20Test/"/>
+    <id>https://iimx.net/2015/09/25/Diagram Test/</id>
+    <published>2015-09-25T14:48:50.000Z</published>
+    <updated>2015-09-26T12:23:24.692Z</updated>
+    <content type="html"><![CDATA[<p>时序图+流程图</p>
+<blockquote>
+<p><a href="https://github.com/akfish/hexo-diagram" target="_blank" rel="external">Render UML sequence diagram in Hexo blog </a><br>安装时候可能需要代理或者国内镜像。<br><a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝NPM镜像</a></p>
+</blockquote>
+<a id="more"></a>
+<blockquote>
+<p>时序图</p>
+</blockquote>
+<p>生成结果<br><img src="/images/sequence.png" alt="sequence"></p>
+<blockquote>
+<p>流程图</p>
+</blockquote>
+<p>生成结果<br><img src="/images/flow.png" alt="flow"></p>
+<blockquote>
+<p>代码高亮测试</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="decorator">@requires_authorization</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># A comment</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'hello world'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>删除测试</p>
+</blockquote>
+<p><del>Mistaken text.</del></p>
+<blockquote>
+<p>表格测试</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help</td>
+<td><del>Display the</del> help window.</td>
+</tr>
+<tr>
+<td>Close</td>
+<td><em>Closes</em> a window</td>
+</tr>
+</tbody>
+</table>
+<hr>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Left-Aligned</th>
+<th style="text-align:center">Center Aligned</th>
+<th style="text-align:right">Right Aligned</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">col 3 is</td>
+<td style="text-align:center">some wordy text</td>
+<td style="text-align:right">$1600</td>
+</tr>
+<tr>
+<td style="text-align:left">col 2 is</td>
+<td style="text-align:center">centered</td>
+<td style="text-align:right">$12</td>
+</tr>
+<tr>
+<td style="text-align:left">zebra stripes</td>
+<td style="text-align:center">are neat</td>
+<td style="text-align:right">$1</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>时序图+流程图</p>
+<blockquote>
+<p><a href="https://github.com/akfish/hexo-diagram">Render UML sequence diagram in Hexo blog </a><br>安装时候可能需要代理或者国内镜像。<br><a href="http://npm.taobao.org/">淘宝NPM镜像</a></p>
+</blockquote>]]>
+    
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[迁移博客]]></title>
+    <link href="https://iimx.net/2015/09/25/%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://iimx.net/2015/09/25/迁移博客/</id>
+    <published>2015-09-25T01:38:02.000Z</published>
+    <updated>2015-09-25T07:39:13.636Z</updated>
+    <content type="html"><![CDATA[<p>买美国机器结果服务商给了个香港节点机器，太意外了。<br>抽空把板瓦工的站点都迁移过来吧。</p>
+<p>逃离板瓦工。。。<br><a id="more"></a><br>折腾这么长时间的HEXO，终于可以正式上线了。上次是用的gitcafe 的pages服务，这次用本机的gogs+git hooks部署。</p>
+<p>hexo相比wordpress 写文章还是有点蛋疼，习惯一段时间吧。</p>
+<p>下一步 开启站点评论，恢复友链。</p>
+<blockquote>
+<p>多说要不要那么坑，https这么长时间也没提供，就因为一个头像来个黄叹号。</p>
+<p>逼死强迫症。</p>
+<p>disqus太慢了。</p>
+<p>友链已修复，抽空看看多说的https。。</p>
+</blockquote>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>买美国机器结果服务商给了个香港节点机器，太意外了。<br>抽空把板瓦工的站点都迁移过来吧。</p>
+<p>逃离板瓦工。。。<br>]]>
+    
+    </summary>
+    
+      <category term="碎碎念" scheme="https://iimx.net/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[9月23日笔记]]></title>
+    <link href="https://iimx.net/2015/09/23/9%E6%9C%8823%E6%97%A5%E7%AC%94%E8%AE%B0/"/>
+    <id>https://iimx.net/2015/09/23/9月23日笔记/</id>
+    <published>2015-09-23T12:38:02.000Z</published>
+    <updated>2015-09-29T02:00:54.107Z</updated>
+    <content type="html"><![CDATA[<p>2015年9月23日学习笔记<br><a id="more"></a></p>
+<h2 id="消息队列、jQuery">消息队列、jQuery</h2><h3 id="消息队列">消息队列</h3><blockquote>
+<ul>
+<li><a href="http://wiki.jikexueyuan.com/project/rabbitmq/hello-world.html" target="_blank" rel="external">RabbitMQ 能为你做些什么？</a></li>
+<li><a href="http://www.oschina.net/translate/top-10-uses-for-message-queue" target="_blank" rel="external">使用消息队列的 10 个理由</a></li>
+</ul>
+</blockquote>
+<h3 id="jQuery">jQuery</h3><blockquote>
+<p><a href="http://wiki.jikexueyuan.com/project/jquery/ajax.html" target="_blank" rel="external">jQuery Ajax</a></p>
+</blockquote>
+<h2 id="Python_json">Python json</h2><h3 id="python_simplejson_模块">python simplejson 模块</h3><p>JSON</p>
+<blockquote>
+<p>表示方法:</p>
+<ul>
+<li>数据在名称/值对中</li>
+<li>数据由逗号分隔</li>
+<li>花括号保存对象</li>
+<li>方括号保存数组</li>
+</ul>
+</blockquote>
+<p><img src="/images/json.png" alt="JSON比较"></p>
+<h3 id="Python_规范">Python 规范</h3><ul>
+<li>定义</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>缩进</li>
+</ul>
+<p>一个 tab 键或是 4 个空格 </p>
+<ul>
+<li>每一个功能对应一个函数</li>
+</ul>
+<p>便于复用，模块化。</p>
+<ul>
+<li>系统命令的引用</li>
+</ul>
+<p>尤其是Linux 一定要用绝对路径（完整路径）</p>
+<ul>
+<li>异常处理</li>
+</ul>
+<p>记得做异常处理</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>2015年9月23日学习笔记<br>]]>
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://iimx.net/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="笔记" scheme="https://iimx.net/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[隐藏显示的desktop.ini]]></title>
+    <link href="https://iimx.net/2015/07/27/%E9%9A%90%E8%97%8F%E6%98%BE%E7%A4%BA%E7%9A%84desktop-ini/"/>
+    <id>https://iimx.net/2015/07/27/隐藏显示的desktop-ini/</id>
+    <published>2015-07-27T11:01:47.000Z</published>
+    <updated>2015-09-26T08:05:15.483Z</updated>
+    <content type="html"><![CDATA[<p>隐藏显示的desktop.ini<br><a id="more"></a></p>
+<h2 id="第一步：右键属性，查看该文件的真实地址">第一步：右键属性，查看该文件的真实地址</h2><h2 id="第二步:WIN+R_cmd回车_输入">第二步:WIN+R cmd回车 输入</h2><p><code>attrib +S +H C:\Users\你的用户名\Desktop\desktop.ini</code></p>
+<h2 id="刷新桌面_就会恢复正常">刷新桌面 就会恢复正常</h2><h2 id="[附件]">[附件]</h2><p>desktop.ini备份<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INI</span><br><span class="line">[.ShellClassInfo]</span><br><span class="line">LocalizedResourceName=@%SystemRoot%\system32\shell32.dll,-21769</span><br><span class="line">IconResource=%SystemRoot%\system32\imageres.dll,-183</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>隐藏显示的desktop.ini<br>]]>
+    
+    </summary>
+    
+      <category term="技巧" scheme="https://iimx.net/tags/%E6%8A%80%E5%B7%A7/"/>
+    
+      <category term="新技能get√" scheme="https://iimx.net/categories/%E6%96%B0%E6%8A%80%E8%83%BDget%E2%88%9A/"/>
+    
+  </entry>
+  
+</feed>
