@@ -4,7 +4,7 @@
   <subtitle><![CDATA[嗯哼]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://iimx.net/"/>
-  <updated>2019-04-02T13:10:18.628Z</updated>
+  <updated>2019-04-06T10:06:30.352Z</updated>
   <id>https://iimx.net/</id>
   
   <author>
@@ -19,12 +19,12 @@
     <link href="https://iimx.net/2019/04/02/docker%E5%9F%BA%E4%BA%8Ealpine%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F/"/>
     <id>https://iimx.net/2019/04/02/docker基于alpine定制镜像/</id>
     <published>2019-04-02T12:49:52.000Z</published>
-    <updated>2019-04-02T13:10:18.628Z</updated>
+    <updated>2019-04-06T10:06:30.352Z</updated>
     <content type="html"><![CDATA[<p>docker 基于alpine定制镜像<br><a id="more"></a></p>
 <h2 id="拉取alpine镜像">拉取alpine镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull alpine</span><br></pre></td></tr></table></figure>
 <h2 id="创建并进入容器">创建并进入容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -it alpine /bin/sh  <span class="comment"># 创建进入容器</span></span><br><span class="line"><span class="built_in">exit</span>  <span class="comment"># 退出</span></span><br><span class="line"></span><br><span class="line">docker ps <span class="operator">-a</span>  <span class="comment"># 查看刚刚创建的容器id</span></span><br><span class="line">docker start &lt;container id&gt;  <span class="comment"># 启动容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it &lt;container id&gt; sh  <span class="comment"># 进入容器</span></span><br></pre></td></tr></table></figure>
 <h2 id="修改容器">修改容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改源</span></span><br><span class="line">sed -i <span class="string">'s/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g'</span> /etc/apk/repositories</span><br><span class="line"><span class="comment"># 修改时区</span></span><br><span class="line">apk add -U tzdata</span><br><span class="line">cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line">apk del tzdata</span><br></pre></td></tr></table></figure>
-<h2 id="创建镜像">创建镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit <span class="operator">-a</span> <span class="string">"镜像作者"</span> -m <span class="string">"提交文字 "</span> &lt;container id&gt; &lt;新镜像名称&gt;:&lt;tag&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="创建镜像">创建镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit <span class="operator">-a</span> <span class="string">"镜像作者"</span> -m <span class="string">"提交文字"</span> &lt;container id&gt; &lt;新镜像名称&gt;:&lt;tag&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="导出导入镜像">导出导入镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker save -o 导出名称.tar &lt;image name&gt;:&lt;tag&gt;  <span class="comment"># 导出镜像</span></span><br><span class="line">docker load &lt; xxx.tar  <span class="comment"># 导入镜像</span></span><br></pre></td></tr></table></figure>]]></content>
     <summary type="html">
     <![CDATA[<p>docker 基于alpine定制镜像<br>]]>
